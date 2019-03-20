@@ -11,7 +11,7 @@
 		Test
 	</div>
 	<script>
-		let connection = new WebSocket('https://dseaman-ws-server.herokuapp.com/');
+		let connection = new WebSocket('wss://dseaman-ws-server.herokuapp.com/');
 		connection.onopen = () => {
 			console.log('connected from the frontend');
 		};
