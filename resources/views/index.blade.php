@@ -10,6 +10,30 @@
 	<div contenteditable="true">
 		Test
 	</div>
-	<script src="main.js"></script>
+	<script>
+		let connection = new WebSocket('https://web-sockets-lab-dseaman.herokuapp.com/');
+		connection.onopen = () => {
+			console.log('connected from the frontend');
+		};
+
+		connection.onerror = () => {
+			console.log('failed to connect from the frontend');
+		};
+
+		connection.onmessage = (event) => {
+			console.log(event);
+
+			let div = document.querySelector('div');
+			div.innerText = event.data;
+		};
+
+		document.querySelector('div').addEventListener('input', (event) => {
+			event.preventDefault();
+
+			let text = document.querySelector('div').innerText;
+			console.log(text);
+			connection.send(text);
+		});
+	</script>
 </body>
 </html>

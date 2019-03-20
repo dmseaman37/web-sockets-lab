@@ -6,7 +6,7 @@ wss.on('connection', (ws) => {
 		console.log(`Received: ${message}`);
 
 		wss.clients.forEach((client) => {
-			
-		})
+			client.send(message);
+		});
 	});
 });
